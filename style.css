@@ -1,0 +1,120 @@
+body
+{
+    background-color:  #36454F;
+    -webkit-user-select: none;       
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+.calculator
+{
+    background-color: #1C1C1C;
+    width: 380px;
+    height: 690px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 30px;
+}
+img
+{
+    width: 800px;
+    margin: 50px;
+}
+.input
+{
+    display: grid;
+    grid-template: repeat(5,75px) / repeat(4, 75px);
+    gap: 10px;
+    padding-bottom: 40px;
+}
+.button
+{
+    width: 75px;
+    height: 75px;
+    background-color: #505050;
+    margin: 0;
+    border-radius: 40px;
+    transition-timing-function: ease;
+    transition: 100ms;
+    color: #D4D4D2;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.light:hover
+{
+    background-color: #D4D4D2;
+}
+.accent:hover
+{
+    background-color: #fdca83;
+}
+.nr:hover, .point:hover
+{
+    background-color: #7a7a7a;
+}
+.output
+{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+h1
+{
+    margin-bottom: 20px;
+    color: #D4D4D2;
+    font-size: 4.5rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+.nr
+{
+    color: #D4D4D2;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.zero
+{
+    grid-column: span 2;
+    width: 130px;
+    justify-content: flex-start;
+    padding-left: 30px;
+}
+.accent
+{
+    background-color: #FF9500;
+    color: #ffffff;
+}
+.light
+{
+    color: #1C1C1C;
+    background: #a0a0a0;
+}
+.MadeByDina
+{
+    color: #FF9500;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 2.75rem;
+}
