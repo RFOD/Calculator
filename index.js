@@ -51,97 +51,18 @@ function display(message) {
 let clearButton = document.querySelector(".clear");
 clearButton.addEventListener("click", clear);
 
-// Multiply function: MULTIPLICATION BUTTON
-
-let multButton = document.querySelector(".multiply");
-multButton.addEventListener("click", () => {
-	display("");
-	operator = "mult";
-});
-
-// Add function: ADD BUTTON
-
-let addButton = document.querySelector(".add");
-addButton.addEventListener("click", () => {
-	display("");
-	operator = "add";
-	let operationResult = operate(num1, num2, operator);
-    let resultString = operationResult.toString();
-    if (resultString.length < 8) {
-        display(operationResult);
-    } else {
-        display(resultString.slice(0, 7));
-    }
-	num1 = operationResult; 
-	array1 = [];
-});
-
-// Divide function: DIVISION BUTTON
-
-let divButton = document.querySelector(".divide");
-divButton.addEventListener("click", () => {
-	display("");
-	operator = "div";
-	let operationResult = operate(num1, num2, operator);
-    let resultString = operationResult.toString();
-    if (resultString.length < 8) {
-        display(operationResult);
-    } else {
-        display(resultString.slice(0, 7));
-    }
-	num1 = operationResult; 
-	array1 = [];
-});
-
-// Subtract function: SUBTRACTION BUTTON
-
-let subButton = document.querySelector(".subtract");
-subButton.addEventListener("click", () => {
-	display("");
-	operator = "sub";
-	let operationResult = operate(num1, num2, operator);
-    let resultString = operationResult.toString();
-    if (resultString.length < 8) {
-        display(operationResult);
-    } else {
-        display(resultString.slice(0, 7));
-    }
-	num1 = operationResult; 
-	array1 = [];
-});
-
-// Power function: SQR BUTTON
-
-let powButton = document.querySelector(".sqr");
-powButton.addEventListener("click", () => {
-	display("");
-	operator = "pow";
-	let operationResult = operate(num1, null, operator);
-	display(operationResult);
-	let resultString = operationResult.toString();
-    if (resultString.length < 8) {
-        display(operationResult);
-    } else {
-        display(resultString.slice(0, 7));
-    }
-	num1 = operationResult;
-	array1 = [];
-});
-// SQRT function: SQRT BUTTON
-
-let radButton = document.querySelector(".sqrt");
-radButton.addEventListener("click", () => {
-	display("");
-	operator = "rad";
-	let operationResult = operate(num1, null, operator);
-    let resultString = operationResult.toString();
-    if (resultString.length < 8) {
-        display(operationResult);
-    } else {
-        display(resultString.slice(0, 7));
-    }
-	num1 = operationResult; 
-	array1 = [];
+let operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (operator && array2.length > 0) {
+            // Perform the previous operation
+            num1 = operate(num1, num2, operator);
+            display(num1);
+            array2 = []; // Clear array2 for the next number
+        }
+        operator = button.getAttribute('data-operator'); // Set the new operator
+        display(""); // Clear the display for the new number
+    });
 });
 
 // Checks for the operator
@@ -181,14 +102,8 @@ function operate(num1, num2, operator) {
 			return result = Math.sqrt(num1);
 		}
 		case "div": {
-			operator = null;
-
 			if (num2 !== 0) {
 				result = num1 / num2;
-				operator = null;
-				num1 = result;
-				num2 = 0;
-				array2 = [];
 				// Check if the result is a whole number or has a fractional part
 				if (result % 1 === 0) {
 					return result;
@@ -198,7 +113,7 @@ function operate(num1, num2, operator) {
 				}
 			} else {
 				// Display an error message if trying to divide by zero
-				display("Can't divide by 0");
+				display("Mr.Fish");
 				return null; 
 			}
 		}
@@ -215,9 +130,8 @@ let equalButton = document.querySelector(".result");
 equalButton.addEventListener("click", () => {
     let operationResult = operate(num1, num2, operator);
     let resultString = operationResult.toString();
+	clear();
 	num1 = operationResult;
-	array2 = [];
-	operator = null;
     if (resultString.length < 8) {
         display(operationResult);
     } else {
