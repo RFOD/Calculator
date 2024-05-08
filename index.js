@@ -161,3 +161,5 @@ equalButton.addEventListener("click", () => {
 		display(operationResult.toExponential(3));
 	}
 });
+
+// To-do: Add point button so it has input for float numbers
