@@ -5,6 +5,9 @@ let num1 = 0;
 let num2 = 0;
 let operator = null;
 
+function display(message) {
+	document.querySelector(".output > h1").innerHTML = message;
+}
 function clear() {
 	array1 = [];
 	array2 = [];
@@ -43,26 +46,54 @@ for (let buttonNr of document.querySelectorAll(".nr")) {
 		}
 	});
 }
-function display(message) {
-	document.querySelector("h1").innerHTML = message;
-}
+
 // Clears the array: CLEAR BUTTON
 
 let clearButton = document.querySelector(".clear");
 clearButton.addEventListener("click", clear);
 
+// Power function: SQR BUTTON
+let powButton = document.querySelector(".sqr");
+powButton.addEventListener("click", () => {
+
+	let operationResult = Math.pow(num1, 2);
+	let resultString = operationResult.toString();
+    num1 = Math.pow(num1, 2);
+	display(num1);
+    array2 = [];
+	if (resultString.length < 8) {
+		display(operationResult);
+	} else {
+		display(operationResult.toExponential(3));
+	}
+});
+
+// SQRT function: SQRT BUTTON
+let radButton = document.querySelector(".sqrt");
+radButton.addEventListener("click", () => {
+    let operationResult = Math.sqrt(num1);
+	let resultString = operationResult.toString();
+    num1 = operationResult;
+    array2 = []; 
+	if (resultString.length < 8) {
+		display(operationResult);
+	} else {
+		display(operationResult.toExponential(3));
+	}
+});
+// Adds Event Listeners to operations
 let operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        if (operator && array2.length > 0) {
-            // Perform the previous operation
-            num1 = operate(num1, num2, operator);
-            display(num1);
-            array2 = []; // Clear array2 for the next number
-        }
-        operator = button.getAttribute('data-operator'); // Set the new operator
-        display(""); // Clear the display for the new number
-    });
+	button.addEventListener("click", () => {
+		if (operator && array2.length > 0) {
+			// Perform the previous operation
+			num1 = operate(num1, num2, operator);
+			array2 = []; // Clear array2 for the next number
+			display(num1);
+		}
+		operator = button.getAttribute('data-operator'); // Set the new operator
+		 // Clear the display for the new number
+	});
 });
 
 // Checks for the operator
@@ -93,14 +124,6 @@ function operate(num1, num2, operator) {
 			array2 = [];
 			return (result);
 		}
-		case "pow": {
-
-			return result = Math.pow(num1, 2);
-		}
-		case "rad": {
-
-			return result = Math.sqrt(num1);
-		}
 		case "div": {
 			if (num2 !== 0) {
 				result = num1 / num2;
@@ -114,7 +137,7 @@ function operate(num1, num2, operator) {
 			} else {
 				// Display an error message if trying to divide by zero
 				display("Mr.Fish");
-				return null; 
+				return null;
 			}
 		}
 		default: {
@@ -128,13 +151,13 @@ function operate(num1, num2, operator) {
 
 let equalButton = document.querySelector(".result");
 equalButton.addEventListener("click", () => {
-    let operationResult = operate(num1, num2, operator);
-    let resultString = operationResult.toString();
+	let operationResult = operate(num1, num2, operator);
+	let resultString = operationResult.toString();
 	clear();
 	num1 = operationResult;
-    if (resultString.length < 8) {
-        display(operationResult);
-    } else {
-        display(operationResult.toExponential(3));
-    }
+	if (resultString.length < 8) {
+		display(operationResult);
+	} else {
+		display(operationResult.toExponential(3));
+	}
 });

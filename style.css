@@ -43,7 +43,7 @@ img
     margin: 0;
     border-radius: 40px;
     transition-timing-function: ease;
-    transition: 100ms;
+    transition: 300ms;
     color: #D4D4D2;
     font-size: 2rem;
     font-family: "Roboto", sans-serif;
@@ -56,14 +56,20 @@ img
 .light:hover
 {
     background-color: #D4D4D2;
+    position: relative;
+    bottom: 2px;
 }
 .accent:hover
 {
     background-color: #fdca83;
+    position: relative;
+    bottom: 2px;
 }
 .nr:hover, .point:hover
 {
     background-color: #7a7a7a;
+    position: relative;
+    bottom: 2px;
 }
 .output
 {
@@ -93,8 +99,8 @@ h1
 }
 .zero
 {
-    grid-column: span 2;
-    width: 130px;
+    grid-column: span 3;
+    width: 215px;
     justify-content: flex-start;
     padding-left: 30px;
 }
