@@ -135,6 +135,6 @@ equalButton.addEventListener("click", () => {
     if (resultString.length < 8) {
         display(operationResult);
     } else {
-        display(resultString.slice(0, 7));
+        display(operationResult.toExponential(2));
     }
 });
