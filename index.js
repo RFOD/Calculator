@@ -30,7 +30,7 @@ for (let buttonNr of document.querySelectorAll(".nr")) {
 				num1 = parseFloat(array1.join(""));
 				display(num1);
 			} else {
-				display("Error");
+				display(num1.toExponential(3));
 			}
 		} else {
 			array2.push(+nr);
@@ -38,7 +38,7 @@ for (let buttonNr of document.querySelectorAll(".nr")) {
 				num2 = parseFloat(array2.join(""));
 				display(num2);
 			} else {
-				display("Error");
+				display(num1.toExponential(3));
 			}
 		}
 	});
@@ -135,6 +135,6 @@ equalButton.addEventListener("click", () => {
     if (resultString.length < 8) {
         display(operationResult);
     } else {
-        display(operationResult.toExponential(2));
+        display(operationResult.toExponential(3));
     }
 });
